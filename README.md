@@ -1,14 +1,19 @@
 <br/>
 <p >
   <h1 >BookiWise | Online Book Store Project </h1>
+  
+
 
 </p>
+
+<img width="1437" alt="Screenshot 2023-01-26 at 8 40 55 PM" src="https://user-images.githubusercontent.com/114147627/214922121-6df16b5c-3286-466f-88a1-af6833dc8d34.png">
 
 <br>
 
 
 
 ## About The Project
+
 
 
 
@@ -33,7 +38,10 @@ The Online Book Store is an interactive and user-friendly web application built 
   - Recent books section based on release date
   - Featured books section based on customer ratings
   - Allow browsing of books by category
- 
+  <br>
+  
+ ![gif1](https://user-images.githubusercontent.com/114147627/214913835-6ed6012a-43bc-4886-adb5-89e52f16a3b8.gif)
+
  <br>
 
 - <b>Authentication and Validations </b>
@@ -47,6 +55,11 @@ The Online Book Store is an interactive and user-friendly web application built 
   
 <br>
 
+ ![0097](https://user-images.githubusercontent.com/114147627/214920408-3b3d0f76-a53b-49aa-b56d-376abd5cea71.gif)
+
+
+<br>
+
 
 - <b>User</b>
   - Register and login
@@ -58,12 +71,26 @@ The Online Book Store is an interactive and user-friendly web application built 
   - Send message to admin through contact form 
   
 <br>
+  
+![88](https://user-images.githubusercontent.com/114147627/214919921-55d3b463-2062-49d2-b753-458d36171dbe.gif)
+
+
+<br>
+
+
+
+<br>
  
 - <b>Books</b>
     - Search for books by title
     - Sort books by Categories 
     - Book deatails page with description and reviews
     
+ <br>
+ 
+ ![kok](https://user-images.githubusercontent.com/114147627/214920883-3531cc62-6e0b-4cf5-a096-84ab0806c8e1.gif)
+ 
+
  <br>
   
 - <b>Admin</b>
@@ -76,6 +103,10 @@ The Online Book Store is an interactive and user-friendly web application built 
   - View the messages from customer 
   - View the orders with details and procees it from customers 
   
+<br>
 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/114147627/214921339-d8853a5f-af86-4533-bada-19dbacace1e4.gif)
+
+<br>
 
 
