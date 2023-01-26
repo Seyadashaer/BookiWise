@@ -12,7 +12,7 @@
 
 
 
-The Online Book Store is a web application built using the Django framework. It allows users to search and purchase books by category and title. Customers can create an account for easy checkout and admin can manage books, categories, orders, and user accounts. This centralized platform aims to provide convenience and a better user experience for customers looking to purchase books online.
+The Online Book Store is an interactive and user-friendly web application built using the Django framework, which offers a wide range of features for customers looking to purchase books online. Users can browse and search for books by category and title, put items in their cart or wishlist, leave reviews, and even send messages to the admin for any issues. The homepage features sections for featured books, recent books, and more. The administrator can also manage books, categories, orders, including adding, removing, and updating book details and prices, making it a centralized platform for all book-related needs.
 
 <br>
 
@@ -30,8 +30,8 @@ The Online Book Store is a web application built using the Django framework. It 
 <br>
 
 - <b>Homepage</b>
-  - Display Recent books section based on release date
-  - Display Featured books based on customer ratings
+  - Recent books section based on release date
+  - Featured books section based on customer ratings
   - Allow browsing of books by category
  
  <br>
@@ -53,6 +53,7 @@ The Online Book Store is a web application built using the Django framework. It 
   - Add books to wishlist 
   - Whishlist and Cart sections 
   - Add books to shopping cart and finalize order
+  - Get Order Succes with order and Payment summary
   - Add review and rating to book 
   - Send message to admin through contact form 
   
