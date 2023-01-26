@@ -24,14 +24,57 @@ The Online Book Store is a web application built using the Django framework. It 
 
 <br>
 
+
 ## Features
-<br>
-<h3><b>1. Authentication - Register and Login</b></h3>
 
-
-The project's authentication feature enables customers to register and sign in. During registration, users are required to provide their full name, email, and password. These inputs must meet the validation criteria set by the project. To enhance security, the project utilizes email regex validation and bcrypt encryption for passwords.
 <br>
 
+- <b>Homepage</b>
+  - Display Recent books section based on release date
+  - Display Featured books based on customer ratings
+  - Allow browsing of books by category
+ 
+ <br>
+
+- <b>Authentication and Validations </b>
+    - Allows for registration and login for customers
+    - User information includes full name, email, and password.
+    - Email should match regex pattern
+    - Password should be at least 8 characters
+    - Name should contain only letters
+    - Password encrypted and hashed for security using bcrypt
+    - Login is done with email and password.
+  
+<br>
+
+
+- <b>User</b>
+  - Register and login
+  - Add books to wishlist 
+  - Whishlist and Cart sections 
+  - Add books to shopping cart and finalize order
+  - Add review and rating to book 
+  - Send message to admin through contact form 
+  
+<br>
+ 
+- <b>Books</b>
+    - Search for books by title
+    - Sort books by Categories 
+    - Book deatails page with description and reviews
+    
+ <br>
+  
+- <b>Admin</b>
+  - Only accessible to users with admin permissions
+  - Add new books
+  - Add new authors
+  - Add new categories
+  - Delete or edit book details 
+  - Add or remove admin to users that give them the admin permisision 
+  - View the messages from customer 
+  - View the orders with details and procees it from customers 
+  
 
 
 
