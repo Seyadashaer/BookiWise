@@ -1,0 +1,617 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>BookiWise - Home</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="eCommerce HTML Template Free Download" name="keywords">
+        <meta content="eCommerce HTML Template Free Download" name="description">
+
+        <!-- Favicon -->
+        <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+        
+
+        <!-- Template Stylesheet -->
+        <link href="{% static 'css/style2.css' %}" rel="stylesheet">
+
+    </head>
+
+    <body>
+        
+        <!-- Nav Bar Start -->
+        <div class="nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                    <a href="/home" class="navbar-brand">MENU</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav ml-auto">
+                            <div class="navbar-nav ml-auto">
+                                <a href="/logout" class="btn cart" style="font-weight: 800; border-radius: 7px; font-size: 17px; margin-right: 10px;">Logout</a>
+                            </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Nav Bar End -->      
+        
+        <!-- Bottom Bar Start -->
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="/home">
+                                <h1>BookiWise</h1>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <form method="get" action="/search">
+                                <input type="text" name="q" placeholder="Search for a book...">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="user">
+                            <a href="/contact" class="btn cart" style="margin-right: 5px;">
+                                <i class="fas fa-address-book"></i>
+                                <span> Contact</span>
+                            </a>
+                            <a href="/wishlist" class="btn wishlist" style="margin-right: 5px;">
+                                <i class="fa fa-heart"></i>
+                                <span> Wishlist</span>
+                            </a>
+                            <a href="/cart" class="btn cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span> Cart</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Bar End -->       
+        
+        <!-- Main Slider Start -->
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3 ">
+                        
+                        
+                        <div class="sidebar-widget brands">
+                            <h2 class="title"><a href="/categories">Our Categories</a></h2>
+                            <ul>
+                                {% for category in categories %}
+                                    <li><a href="/category_view/{{category.name}}"> {{category.name}} </a><span>({{category.books.count}})</span></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        
+            
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <div class="header-slider normal-slider">
+                            <div class="header-slider-item">
+                                <img src="{% static 'img/slider-4.jpg' %}" alt="Slider Image" />
+
+                                <div class="header-slider-caption">
+                                    <p>For All Your Reading Needs.</p>
+                                    <a class="btn" href="/categories"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="header-slider-item">
+                                <img src="{% static 'img/slider-7.jpg' %}" alt="Slider Image" />
+                                <div class="header-slider-caption">
+                                    <p>Escape into a good book, Find your next adventure in our books.</p>
+                                    <a class="btn" href="/categories"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                </div>
+                            </div>
+                            <div class="header-slider-item">
+                                <img src="{% static 'img/slider-6.jpg' %}" alt="Slider Image" />
+                                <div class="header-slider-caption">
+                                    <p>Open a book and open a new world.</p>
+                                    <a class="btn" href="/categories"><i class="fa fa-shopping-cart"></i>Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Feature Start-->
+        <div class="feature">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fab fa-cc-mastercard"></i>
+                            <h2>Secure Payment</h2>
+                            <p>
+                                Implemented many secure payment options for customers.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-truck"></i>
+                            <h2>Worldwide Delivery</h2>
+                            <p>
+                                Many options for customers to receive their books from any location.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-sync-alt"></i>
+                            <h2>90 Days Return</h2>
+                            <p>
+                                Return policy for customers if they are not satisfied.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature-col">
+                        <div class="feature-content">
+                            <i class="fa fa-comments"></i>
+                            <h2>24/7 Support</h2>
+                            <p>
+                                Customer support to assist their questions and concerns.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Feature End-->      
+
+        <!-- Featured Product Start -->
+        <div class="featured-product product">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h1>Featured Books</h1>
+                </div>
+                <div class="row align-items-center product-slider product-slider-4">
+                    {% for book in featured_books %}
+                    <div class="col-lg-3" >
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="/book_detail/{{book.id}}">{{ book.title }}</a>
+                                
+                            </div>
+                            <div class="product-image">
+                                <a href="/book_detail/{{book.id}}">
+                                    <img src="{{ book.bookpage.url }}" alt="Product Image" style="height: 22em;">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add_to_cart/{{book.id}}"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="/add_to_wishlist/{{book.id}}"><i class="fa fa-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{ book.price }}</h3>
+                                <a class="btn" href="/add_to_cart/{{book.id}}"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Featured Product End -->       
+        
+        <!-- Newsletter Start -->
+        <div class="newsletter">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>Subscribe Our Newsletter</h1>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form">
+                            <input type="email" value="Your email here">
+                            <button>Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter End -->        
+        
+        <!-- Recent Product Start -->
+        <div class="recent-product product">
+            <div class="container-fluid">
+                <div class="section-header">
+                    <h1>Recent Books</h1>
+                </div>
+                <div class="row align-items-center product-slider product-slider-4">
+                    {% for book in recent_books %}
+                    <div class="col-lg-3" >
+                        <div class="product-item">
+                            <div class="product-title">
+                                <a href="/book_detail/{{book.id}}">{{ book.title }}</a>
+                                
+                            </div>
+                            <div class="product-image">
+                                <a href="/book_detail/{{book.id}}">
+                                    <img src="{{ book.bookpage.url }}" alt="Product Image" style="height: 22em;">
+                                </a>
+                                <div class="product-action">
+                                    <a href="/add_to_cart/{{book.id}}"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="/add_to_wishlist/{{book.id}}"><i class="fa fa-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-price">
+                                <h3><span>$</span>{{ book.price }}</h3>
+                                <a class="btn" href="/add_to_cart/{{book.id}}"><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Recent Product End -->
+        
+        <!-- Footer Start -->
+        <div class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Get in Touch</h2>
+                            <div class="contact-info">
+                                <p><i class="fa fa-map-marker"></i>123 E Store, Los Angeles, USA</p>
+                                <p><i class="fa fa-envelope"></i>BookiWise@gmail.com</p>
+                                <p><i class="fa fa-phone"></i>+123-456-7890</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Follow Us</h2>
+                            <div class="contact-info">
+                                <div class="social">
+                                    <a href=""><i class="fab fa-twitter"></i></a>
+                                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                                    <a href=""><i class="fab fa-instagram"></i></a>
+                                    <a href=""><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Info</h2>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms & Condition</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h2>Purchase Info</h2>
+                            <ul>
+                                <li><a href="#">Pyament Policy</a></li>
+                                <li><a href="#">Shipping Policy</a></li>
+                                <li><a href="#">Return Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row payment align-items-center">
+                    <div class="col-md-6">
+                        <div class="payment-method">
+                            <h2>We Accept:</h2>
+                            <img src="{% static 'img/payment-method.png' %}" alt="Payment Method" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="payment-security">
+                            <h2>Secured By:</h2>
+                            <img src="{% static 'img/godaddy.svg' %}" alt="Payment Security" />
+                            <img src="{% static 'img/norton.svg' %}" alt="Payment Security" />
+                            <img src="{% static 'img/ssl.svg' %}" alt="Payment Security" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+        
+        <!-- Footer Bottom Start -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 copyright">
+                        <p>Copyright &copy; <a href="#">BookiWise</a>. All Rights Reserved</p>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom End -->       
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+        
+        <!-- Template Javascript -->
+        <script src="{% static 'js/main.js' %}"></script> 
+        <script>
+            (function ($) {
+    "use strict";
+    
+    // Dropdown on mouse hover
+    $(document).ready(function () {
+        function toggleNavbarMethod() {
+            if ($(window).width() > 768) {
+                $('.navbar .dropdown').on('mouseover', function () {
+                    $('.dropdown-toggle', this).trigger('click');
+                }).on('mouseout', function () {
+                    $('.dropdown-toggle', this).trigger('click').blur();
+                });
+            } else {
+                $('.navbar .dropdown').off('mouseover').off('mouseout');
+            }
+        }
+        toggleNavbarMethod();
+        $(window).resize(toggleNavbarMethod);
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
+    });
+    
+    
+    // Header slider
+    $('.header-slider').slick({
+        autoplay: true,
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+    
+    
+    // Product Slider 4 Column
+    $('.product-slider-4').slick({
+        autoplay: true,
+        infinite: true,
+        dots: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    });
+    
+    
+    // Product Slider 3 Column
+    $('.product-slider-3').slick({
+        autoplay: true,
+        infinite: true,
+        dots: false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    });
+    
+    
+    // Product Detail Slider
+    $('.product-slider-single').slick({
+        infinite: true,
+        autoplay: true,
+        dots: false,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        asNavFor: '.product-slider-single-nav'
+    });
+    $('.product-slider-single-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true,
+        asNavFor: '.product-slider-single'
+    });
+    
+    
+    // Brand Slider
+    $('.brand-slider').slick({
+        speed: 5000,
+        autoplay: true,
+        autoplaySpeed: 0,
+        cssEase: 'linear',
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        infinite: true,
+        swipeToSlide: true,
+        centerMode: true,
+        focusOnSelect: false,
+        arrows: false,
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 300,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    });
+    
+    
+    // Review slider
+    $('.review-slider').slick({
+        autoplay: true,
+        dots: false,
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    });
+    
+    
+    // Widget slider
+    $('.sidebar-slider').slick({
+        autoplay: true,
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+    
+    
+    // Quantity
+    $('.qty button').on('click', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('btn-plus')) {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            if (oldValue > 0) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 0;
+            }
+        }
+        $button.parent().find('input').val(newVal);
+    });
+    
+    
+    // Shipping address show hide
+    $('.checkout #shipto').change(function () {
+        if($(this).is(':checked')) {
+            $('.checkout .shipping-address').slideDown();
+        } else {
+            $('.checkout .shipping-address').slideUp();
+        }
+    });
+    
+    
+    // Payment methods show hide
+    $('.checkout .payment-method .custom-control-input').change(function () {
+        if ($(this).prop('checked')) {
+            var checkbox_id = $(this).attr('id');
+            $('.checkout .payment-method .payment-content').slideUp();
+            $('#' + checkbox_id + '-show').slideDown();
+        }
+    });
+})(jQuery);
+
+
+        </script>
+
+    </body>
+</html>

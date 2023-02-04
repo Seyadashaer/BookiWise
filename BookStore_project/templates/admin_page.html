@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>BookiWise - Admin</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="eCommerce HTML Template Free Download" name="keywords">
+        <meta content="eCommerce HTML Template Free Download" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/slick/slick.css" rel="stylesheet">
+        <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{% static 'css/admin.css' %}" rel="stylesheet">
+
+    </head>
+
+    <body>
+        
+        <!-- Nav Bar Start -->
+        <div class="nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                    <a href="/home" class="navbar-brand">MENU</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav ml-auto">
+                
+                                <div class="nav-item">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Nav Bar End -->      
+        
+        <!-- Bottom Bar Start -->
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="/home">
+                                <h1 style="font-size: 25px;">BookiWise|<span style="font-size: 20px;">admin</span></h1>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <form method="get" action="/search">
+                                <input type="text" name="q" placeholder="Search for a book...">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/view_messages">
+                            <button type="button" class="btn btn-primary" style="margin-left: 70px; margin-bottom: 20px;">
+                                Messages
+                                <!-- badge class is used with background color-->
+                                <span class="badge bg-danger">{{messages_number}}</span>
+                            </button>
+                        </a>
+                        <!-- Icon -->
+                        
+
+                       
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Bar End -->       
+        
+
+        <!-- Admin Dashbard Start -->
+        <div class="my-account">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link active" id="dashboard-nav" data-toggle="pill" href="#dashboard-tab" role="tab"><i class="fas fa-book-open"></i> All Book</a>
+                            <a class="nav-link" id="orders-nav" data-toggle="pill" href="#orders-tab" role="tab"><i class="fa fa-shopping-bag"></i> Orders</a>
+                            <a class="nav-link" id="payment-nav" data-toggle="pill" href="#payment-tab" role="tab"><i class="fa fa-book"></i> Add Book</a>
+                            <a class="nav-link" id="address-nav" data-toggle="pill" href="#address-tab" role="tab"><i class="fa fa-user"></i> Add Author</a>
+                            <a class="nav-link" id="address-nav" data-toggle="pill" href="#admin-tab" role="tab"><i class="fas fa-address-book"></i> Add Admin</a>
+                            <a class="nav-link" id="address-nav" data-toggle="pill" href="#users-tab"  role="tab"><i class="fa fa-user"></i> All Users</a>
+                            <a class="nav-link" id="account-nav" data-toggle="pill" href="#account-tab" role="tab"><i class="fa fa-th-list"></i> Add Category</a>
+                            <a class="nav-link" href="/logout"><i class="fa fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
+                                <h2>All Books</h2>
+                                <table style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Author</th>
+                                            <th>Category</th>
+                                            <th>Price</th>
+                                            <th>Rating</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for book in books %}
+                                        <tr>
+                                            <td><a href="/book_detail/{{book.id}}">{{ book.title }}</a></td>
+                                            <td>{{ book.author.name }}</td>
+                                            <td>{{ book.category.name }}</td>
+                                            <td>$ {{ book.price }}</td>
+                                            <td>{{book.total_rating}}</td>
+                                            <td>
+                                                <a href="/edit_book/{{book.id}}">Edit</a> |
+                                                <a href="/delete_book/{{book.id}}">Delete</a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
+                                <div>
+                                
+                                        <h1>All Orders</h1>
+                                        <hr>
+                                        {% for order in orders %}
+                                        <div class="order-container">
+                                            <h3>Order #{{ order.id }} | {{order.created_at}} | <a href="/delete_order/{{order.id}}">Delete</a></h3>
+                                            <p><b>Customer:</b> {{ order.customer.first_name}} {{ order.customer.last_name }}</p>
+                                            <p><b>Shipping Address:</b> {{ order.address }} | {{order.country }}</p>
+                                            <p><b>Payment Method:</b> {{order.payment_method}}</p>
+                                            <p><b>Total Price:</b>$ {{ order.total_price }}</p>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Book</th>
+                                                        <th>Quantity</th>
+                                                        <th>Price</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for item in order.items.all %}
+                                                        <tr>
+                                                            <td>{{ item.book.title }}</td>
+                                                            <td>{{ item.quantity }}</td>
+                                                            <td> $ {{ item.price }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <hr>
+                                        {% endfor %}
+
+                                    
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
+                                <div>
+                                    <h3>Add New Book</h3>
+                            
+                                    <form action="/add_book" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="author">Author:</label>
+                                            <select name="author" class="form-control">
+                                                {% for author in authors %}
+                                                    <option value="{{ author.id }}">{{ author.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="category">Category:</label>
+                                            <select name="category" class="form-control">
+                                                {% for category in categories %}
+                                                    <option value="{{ category.id }}">{{ category.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="title">Title:</label>
+                                            <input type="text" name="title" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="price">Price:</label>
+                                            <input type="number" name="price" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="bookpage">Bookpage:</label>
+                                            <input type="file" name="bookpage" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description:</label>
+                                            <textarea name="description" class="form-control" rows="10"></textarea>
+                                        </div>
+                                        <input type="submit" value="Add Book" class="btn" style="background-color: #FF6F61;">
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="address-tab" role="tabpanel" aria-labelledby="payment-nav">
+                                <h3>Add New Author</h3>
+
+                                <form action="/add_author" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="name">Name:</label>
+                                        <input type="text" name="name" class="form-control">
+                                    </div>
+                                    <input type="submit" value="Add Author" class="btn" style="background-color: #FF6F61;">
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="admin-tab" role="tabpanel" aria-labelledby="payment-nav">
+                                <h3>Add New Admin</h3>
+
+                                <form action="/add_admin/{{user.email}}" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="name">Email:</label>
+                                        <input type="text" name="admin_email" class="form-control">
+                                    </div>
+                                    <input type="submit" value="Add Admin" class="btn" style="background-color: #FF6F61;">
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="users-tab" role="tabpanel" aria-labelledby="payment-nav">
+                                <h2>All Users</h2>
+
+                                <table style="width: 100%; font-size: smaller;">
+                                    <thead>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>Email</th>
+                                            <th>Is Admin?</th>
+                                            <th>Created At</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for user in users %}
+                                        <tr>
+                                            <td>{{ user.first_name }}</td>
+                                            <td>{{ user.last_name }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td>{{ user.is_admin }}</td>
+                                            <td>{{ user.created_at }}</td>
+                                            <td>Admin: <a href="/add_as_admin/{{user.id}}">Add</a> | <a href="/remove_as_admin/{{user.id}}">Remove</a></td>
+
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+
+
+                            <div class="tab-pane fade" id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+                                <div>
+                                    <h3>Add New Category</h3>
+                                    <form action="/add_category" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="name">Name:</label>
+                                            <input type="text" name="name" class="form-control">
+                                        </div>
+                                        <input type="submit" value="Add Category" class="btn" style="background-color: #FF6F61;">
+                                    </form>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- My Account End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+        
+        <!-- Template Javascript -->
+        <script src="{% static 'js/main.js' %}"></script> 
+
+    </body>
+</html>

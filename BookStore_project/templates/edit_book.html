@@ -1,0 +1,414 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>BookiWise - Admin</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="eCommerce HTML Template Free Download" name="keywords">
+        <meta content="eCommerce HTML Template Free Download" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Source+Code+Pro:700,900&display=swap" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="lib/slick/slick.css" rel="stylesheet">
+        <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="{% static 'css/edit.css' %}" rel="stylesheet">
+ 
+    </head>
+
+    <body>
+        
+        <!-- Nav Bar Start -->
+        <div class="nav">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                    <a href="/home" class="navbar-brand">MENU</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav ml-auto">
+                
+                                <div class="nav-item">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Nav Bar End -->      
+        
+        <!-- Bottom Bar Start -->
+        <div class="bottom-bar">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <a href="/admin_page">
+                                <h1 style="font-size: 25px;">BookiWise|<span style="font-size: 20px;">admin</span></h1>
+                            </a>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="search">
+                            <form method="get" action="/search">
+                                <input type="text" name="q" placeholder="Search for a book...">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="/view_messages">
+                            <button type="button" class="btn btn-primary" style="margin-left: 70px; margin-bottom: 20px;">
+                                Messages
+                                <!-- badge class is used with background color-->
+                                <span class="badge bg-danger">{{messages_number}}</span>
+                            </button>
+                        </a>
+                        <!-- Icon -->
+                        
+
+                       
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Bar End -->       
+        
+
+        <!-- Admin Dashbard Start -->
+        <div class="my-account">
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    
+                    <div class="col-md-9">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="dashboard-tab" role="tabpanel" aria-labelledby="dashboard-nav">
+                                <div>
+                                
+                                    <hr>
+                                    <div>
+                                        <h3>Edit Book</h3>
+                                
+                                        <form action="/edit_book/{{book.id}}" method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <label for="author">Author:</label>
+                                                <select name="author" class="form-control">
+                                                    {% for author in authors %}
+                                                        <option value="{{ author.id }}" {% if author.id == book.author.id %}selected{% endif %}>{{ author.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="category">Category:</label>
+                                                <select name="category" class="form-control">
+                                                    {% for category in categories %}
+                                                        <option value="{{ category.id }}"  {% if category.id == book.category.id %}selected{% endif %}>{{ category.name }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="title">Title:</label>
+                                                <input type="text" name="title" class="form-control" value="{{book.title}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="price">Price:</label>
+                                                <input type="number" name="price" class="form-control" value="{{book.price}}">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="description">Description:</label>
+                                                <textarea name="description" class="form-control" rows="10">{{book.description}}</textarea>
+                                            </div>
+                                            <input type="submit" value="Edit Book" class="btn" style="background-color: #FF6F61;">
+                                        </form>
+                                        
+                                    </div>
+
+                                
+                            </div>
+                            </div>
+                            
+
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- My Account End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+        
+        <!-- Template Javascript -->
+        <script src="{% static 'js/main.js' %}"></script> 
+        <script>
+            (function ($) {
+    "use strict";
+    
+    // Dropdown on mouse hover
+    $(document).ready(function () {
+        function toggleNavbarMethod() {
+            if ($(window).width() > 768) {
+                $('.navbar .dropdown').on('mouseover', function () {
+                    $('.dropdown-toggle', this).trigger('click');
+                }).on('mouseout', function () {
+                    $('.dropdown-toggle', this).trigger('click').blur();
+                });
+            } else {
+                $('.navbar .dropdown').off('mouseover').off('mouseout');
+            }
+        }
+        toggleNavbarMethod();
+        $(window).resize(toggleNavbarMethod);
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
+    });
+    
+    
+    // Header slider
+    $('.header-slider').slick({
+        autoplay: true,
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+    
+    
+    // Product Slider 4 Column
+    $('.product-slider-4').slick({
+        autoplay: true,
+        infinite: true,
+        dots: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    });
+    
+    
+    // Product Slider 3 Column
+    $('.product-slider-3').slick({
+        autoplay: true,
+        infinite: true,
+        dots: false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    });
+    
+    
+    // Product Detail Slider
+    $('.product-slider-single').slick({
+        infinite: true,
+        autoplay: true,
+        dots: false,
+        fade: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        asNavFor: '.product-slider-single-nav'
+    });
+    $('.product-slider-single-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true,
+        asNavFor: '.product-slider-single'
+    });
+    
+    
+    // Brand Slider
+    $('.brand-slider').slick({
+        speed: 5000,
+        autoplay: true,
+        autoplaySpeed: 0,
+        cssEase: 'linear',
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        infinite: true,
+        swipeToSlide: true,
+        centerMode: true,
+        focusOnSelect: false,
+        arrows: false,
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 300,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    });
+    
+    
+    // Review slider
+    $('.review-slider').slick({
+        autoplay: true,
+        dots: false,
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
+    });
+    
+    
+    // Widget slider
+    $('.sidebar-slider').slick({
+        autoplay: true,
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
+    
+    
+    // Quantity
+    $('.qty button').on('click', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('btn-plus')) {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            if (oldValue > 0) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 0;
+            }
+        }
+        $button.parent().find('input').val(newVal);
+    });
+    
+    
+    // Shipping address show hide
+    $('.checkout #shipto').change(function () {
+        if($(this).is(':checked')) {
+            $('.checkout .shipping-address').slideDown();
+        } else {
+            $('.checkout .shipping-address').slideUp();
+        }
+    });
+    
+    
+    // Payment methods show hide
+    $('.checkout .payment-method .custom-control-input').change(function () {
+        if ($(this).prop('checked')) {
+            var checkbox_id = $(this).attr('id');
+            $('.checkout .payment-method .payment-content').slideUp();
+            $('#' + checkbox_id + '-show').slideDown();
+        }
+    });
+})(jQuery);
+
+
+        </script>
+
+    </body>
+</html>
